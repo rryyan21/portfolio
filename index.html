@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Portfolio</div>
+      <div class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <section id="home" class="hero">
+      <!-- Floating Background Elements -->
+      <div class="floating-dot"></div>
+      <div class="floating-dot"></div>
+      <div class="floating-dot"></div>
+      <div class="floating-dot"></div>
+      <div class="floating-dot"></div>
+      <div class="floating-dot"></div>
+      <div class="floating-dot"></div>
+      <div class="floating-dot"></div>
+      <div class="floating-line"></div>
+      <div class="floating-line"></div>
+      <div class="floating-line"></div>
+      <div class="floating-line"></div>
+      <div class="floating-line"></div>
+      <div class="floating-line"></div>
+      <div class="floating-line"></div>
+      <div class="floating-line"></div>
+
+      <div class="hero-content">
+        <h1 class="animate-text">
+          Hi, I'm <span class="highlight">Ryan</span>
+        </h1>
+        <p class="animate-text">Full Stack Developer &amp; Designer</p>
+        <div class="cta-buttons">
+          <a href="#projects" class="btn primary">View My Work</a>
+          <a href="#contact" class="btn secondary">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="shape"></div>
+        <div class="profile-image">
+          <img src="assets/images/mainImg.jpg" alt="Profile Picture" />
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about-content">
+        <h2>About Me</h2>
+        <p>
+          I'm a passionate developer with a keen eye for design. I create
+          beautiful, user‑focused applications that solve real problems and make
+          a difference.
+        </p>
+        <div class="skills">
+          <div class="skill-category">
+            <h3>Frontend</h3>
+            <div class="skill-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>React</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3>Backend</h3>
+            <div class="skill-tags">
+              <span>Node.js</span>
+              <span>Python</span>
+              <span>SQL</span>
+              <span>MongoDB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <h2>My Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <a href="project-detail.html?id=project1" class="project-link">
+            <div class="project-image">
+              <img src="assets/images/Project1.jpg" alt="Project 1" />
+              <div class="project-demo">
+                <video controls>
+                  <source
+                    src="assets/images/Project1Demo.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Janky Hollow Knight</h3>
+              <div class="project-tags">
+                <span>Greenfoot</span>
+                <span>Java</span>
+                <span>Javascript</span>
+              </div>
+              <p>
+                An interactive game developed using Greenfoot, showcasing
+                object-oriented programming and game mechanics.
+              </p>
+            </div>
+          </a>
+        </div>
+        <div class="project-card">
+          <a href="project-detail.html?id=project2" class="project-link">
+            <div class="project-image">
+              <img src="assets/images/Project2.jpg" alt="Project 2" />
+              <div class="project-demo">
+                <video controls>
+                  <source
+                    src="assets/images/Project2Demo.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>AI Tic Tac Toe</h3>
+              <div class="project-tags">
+                <span>Python</span>
+                <span>Django</span>
+                <span>PostgreSQL</span>
+              </div>
+              <p>
+                A full-stack web application built with Django, featuring user
+                authentication and database management.
+              </p>
+            </div>
+          </a>
+        </div>
+        <div class="project-card">
+          <a href="project-detail.html?id=project3" class="project-link">
+            <div class="project-image">
+              <img src="assets/images/project3.jpg" alt="Project 3" />
+              <div class="project-demo">
+                <video controls>
+                  <source
+                    src="assets/images/Project3Demo.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Work In Progress</h3>
+              <div class="project-tags">
+                <span>Coming Soon</span>
+              </div>
+              <p>
+                A RESTful API built with Express.js, demonstrating backend
+                development and database integration.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Get In Touch</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p>ryangpt@umich.edu</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <p>+1 (530) 786-9574</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-file-pdf"></i>
+            <a
+              href="assets/images/RGResume.pdf"
+              target="_blank"
+              class="resume-link"
+              >View Resume</a
+            >
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-github"></i>
+            <a
+              href="https://github.com/rryyan21"
+              target="_blank"
+              class="github-link"
+              >View GitHub</a
+            >
+          </div>
+        </div>
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>&copy; 2024 Your Name. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
