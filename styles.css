@@ -297,6 +297,16 @@ body {
   color: var(--accent-3);
 }
 
+.skill-tags span:nth-child(5) {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.skill-tags span:nth-child(6) {
+  border: 2px solid var(--accent-1);
+  color: var(--accent-1);
+}
+
 /* Projects Section */
 .projects {
   padding: 5rem 2rem;
