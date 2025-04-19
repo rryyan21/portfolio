@@ -339,13 +339,17 @@ body {
   overflow: hidden;
   transition: transform 0.3s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .project-link {
   text-decoration: none;
   color: inherit;
-  display: block;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .project-card:hover {
@@ -401,6 +405,9 @@ body {
 
 .project-info {
   padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-info h3 {
@@ -416,33 +423,53 @@ body {
 }
 
 .project-tags span {
-  background: var(--accent-color);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 15px;
-  font-size: 0.875rem;
+  background-color: var(--background);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .project-tags span:nth-child(1) {
-  background: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
 }
 
 .project-tags span:nth-child(2) {
-  background: var(--accent-1);
+  border: 2px solid var(--accent-1);
+  color: var(--accent-1);
 }
 
 .project-tags span:nth-child(3) {
-  background: var(--accent-2);
+  border: 2px solid var(--accent-2);
+  color: var(--accent-2);
 }
 
 .project-tags span:nth-child(4) {
-  background: var(--accent-3);
+  border: 2px solid var(--accent-3);
+  color: var(--accent-3);
+}
+
+.project-tags span:nth-child(5) {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.project-tags span:nth-child(6) {
+  border: 2px solid var(--accent-1);
+  color: var(--accent-1);
 }
 
 .project-info p {
   margin: 0;
   color: var(--text-color);
   line-height: 1.5;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Project Detail Page Styles */
@@ -559,13 +586,42 @@ body {
 }
 
 .tech-tags span {
-  background: var(--accent-color);
-  color: white;
+  background-color: var(--background);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
-  font-weight: 500;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0.5rem;
+}
+
+.tech-tags span:nth-child(1) {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.tech-tags span:nth-child(2) {
+  border: 2px solid var(--accent-1);
+  color: var(--accent-1);
+}
+
+.tech-tags span:nth-child(3) {
+  border: 2px solid var(--accent-2);
+  color: var(--accent-2);
+}
+
+.tech-tags span:nth-child(4) {
+  border: 2px solid var(--accent-3);
+  color: var(--accent-3);
+}
+
+.tech-tags span:nth-child(5) {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.tech-tags span:nth-child(6) {
+  border: 2px solid var(--accent-1);
+  color: var(--accent-1);
 }
 
 .project-links {
