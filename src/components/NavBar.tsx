@@ -10,16 +10,28 @@ export default function Navbar() {
       <div className="logo text-xl font-bold text-blue-600">Ryan Gupta</div>
 
       <div className="nav-links hidden md:flex gap-8">
-        <Link href="/#home" className="hover:text-blue-600 font-medium">
+        <Link
+          href="/#home"
+          className="text-black hover:text-blue-600 font-medium"
+        >
           Home
         </Link>
-        <Link href="/#about" className="hover:text-blue-600 font-medium">
+        <Link
+          href="/#about"
+          className="text-black hover:text-blue-600 font-medium"
+        >
           About
         </Link>
-        <Link href="/#projects" className="hover:text-blue-600 font-medium">
+        <Link
+          href="/#projects"
+          className="text-black hover:text-blue-600 font-medium"
+        >
           Projects
         </Link>
-        <Link href="/#contact" className="hover:text-blue-600 font-medium">
+        <Link
+          href="/#contact"
+          className="text-black hover:text-blue-600 font-medium"
+        >
           Contact
         </Link>
       </div>

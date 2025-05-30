@@ -16,23 +16,23 @@ export default function About() {
     {
       icon: <Rocket className="text-purple-600 w-6 h-6" />,
       title: "University of Michigan",
-      timeframe: "2023 – Present",
+      timeframe: "2024 – Present",
       description:
-        "Studying Computer Science & Robotics. Contributing to MRacing and UWAFT on perception and control systems.",
+        "Studying Computer Science & Robotics. Contributing to MRacing's autonomous car.",
     },
     {
       icon: <Brain className="text-red-500 w-6 h-6" />,
       title: "Research & Teaching",
       timeframe: "2024 – Present",
       description:
-        "Involved in research on autonomous systems and mentoring peers through IA/TA positions.",
+        "Involved in research on lane centering controls at the University of Waterloo's Alternate Fuels Team.",
     },
     {
       icon: <Laptop className="text-green-600 w-6 h-6" />,
       title: "Youphoria + ProofIt",
       timeframe: "2025 – Present",
       description:
-        "Building real-world tools with Youphoria and developing personal projects like ProofIt and GaslightingBot.",
+        "Building real-world tools with Youphoria and developing personal projects like ProofIt.",
     },
   ];
 
@@ -50,13 +50,6 @@ export default function About() {
       className="about py-24 px-6 bg-gradient-to-br from-slate-100 to-white relative z-10"
     >
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-8">About Me</h2>
-        <p className="text-lg text-gray-700 mb-12">
-          I'm a passionate developer with a keen eye for design. I create
-          beautiful, user‑focused applications that solve real problems and make
-          a difference.
-        </p>
-
         {/* Skills Grid */}
         <div className="skills grid grid-cols-1 md:grid-cols-3 gap-12 text-left mb-20">
           <div>
@@ -71,6 +64,7 @@ export default function About() {
                 "C++",
                 "Java",
                 "HTML/CSS",
+                "Swift",
               ].map((tag) => (
                 <span
                   key={tag}
@@ -94,6 +88,8 @@ export default function About() {
                 "Pytorch",
                 "Numpy",
                 "Pandas",
+                "Tailwind",
+                "OpenCV",
               ].map((tag) => (
                 <span
                   key={tag}
@@ -108,7 +104,7 @@ export default function About() {
           <div>
             <h3 className="text-xl font-semibold text-green-500 mb-4">Tools</h3>
             <div className="flex flex-wrap gap-2">
-              {["Eclipse", "GitHub", "GitLab", "Replit"].map((tag) => (
+              {["Eclipse", "Git", "GitLab", "Replit"].map((tag) => (
                 <span
                   key={tag}
                   className="rounded-full border-2 border-green-500 text-green-500 px-4 py-1 text-sm shadow-sm bg-white"

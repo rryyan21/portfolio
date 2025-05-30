@@ -23,8 +23,8 @@ export interface Project {
       tags: ["Greenfoot", "Java", "JavaScript"],
       description:
         "An interactive game developed using Greenfoot, showcasing object-oriented programming and game mechanics.",
-      github: "https://github.com/ryan/janky-hollow-knight",
-      demo: "https://janky-knight-demo.vercel.app",
+      github: "https://github.com/rryyan21/Janky-Hollow-Knight-",
+      demo: "/projects/project1/demo",
       year: "2024",
       category: "Game Development",
       features: [
@@ -54,8 +54,8 @@ export interface Project {
       tags: ["Python", "HTML", "JavaScript"],
       description:
         "A full-stack web application built with Django, featuring user authentication and database management.",
-      github: "https://github.com/ryan/ai-tic-tac-toe",
-      demo: "https://tic-ai.vercel.app",
+      github: "/projects/project2/demo",
+      demo: "/projects/project2/demo",
       year: "2023",
       category: "AI",
       features: [
@@ -80,8 +80,8 @@ export interface Project {
       tags: ["Python", "OpenCV", "Arduino", "Computer Vision"],
       description:
         "Automatic Water Gun System for Bus Safety utilizing Computer Vision and Arduino.",
-      github: "https://github.com/ryan/waila-system",
-      demo: "https://waila.vercel.app",
+      github: "/projects/project3/demo",
+      demo: "/projects/project3/demo",
       year: "2023",
       category: "Computer Vision",
       features: [
@@ -106,8 +106,8 @@ export interface Project {
       tags: ["JavaScript", "Node.js", "HTML", "CSS"],
       description:
         "Multiplayer web game featuring physics-based grappling hooks and real-time interaction.",
-      github: "https://github.com/ryan/grapple-game",
-      demo: "https://grapple-online.vercel.app",
+      github: "https://github.com/rryyan21/Grapple-Arena",
+      demo: "/projects/project4/demo",
       year: "2022",
       category: "Game Dev",
       features: [

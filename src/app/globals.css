@@ -41,3 +41,20 @@ html {
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   }
 }
+
+/* 🔵🟡 Pulse color animation for floating dots */
+@keyframes pulseColor {
+  0% {
+    background-color: #005ef6; /* blue-500 */
+  }
+  50% {
+    background-color: #f7c600; /* yellow-400 */
+  }
+  100% {
+    background-color: #ff0000;
+  }
+}
+
+.animate-pulse-color {
+  animation: pulseColor 10s ease-in-out infinite;
+}
