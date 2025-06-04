@@ -72,6 +72,20 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
         </div>
 
         {/* Feature Sections */}
+
+        {project.details?.length > 0 && (
+          <div className="mb-6">
+            <h3 className="text-sm font-semibold text-gray-800 mb-2">
+              Project Details
+            </h3>
+            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+              {project.details.map((detail, i) => (
+                <li key={i}>{detail}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <div className="mt-16 grid gap-10">
           {project.features?.length > 0 && (
             <div>

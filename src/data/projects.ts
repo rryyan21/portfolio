@@ -10,6 +10,7 @@ export interface Project {
     year: string;
     category: string;
     features: string[];
+    details: string[];
     challenges: string[];
     achievements: string[];
   }
@@ -27,6 +28,12 @@ export interface Project {
       demo: "/projects/project1/demo",
       year: "2024",
       category: "Game Development",
+      details: [
+        "Inspired by the Hollow Knight game, created using Greenfoot in Java.",
+        "Focused on core OOP concepts like inheritance, polymorphism, and abstraction.",
+        "Game included custom sprites, animations, and audio for a complete experience.",
+        "Integrated JavaScript to extend certain UI elements and logic.",
+      ],
       features: [
         "Custom character movement and physics system",
         "Enemy AI with different behavior patterns",
@@ -58,6 +65,12 @@ export interface Project {
       demo: "/projects/project2/demo",
       year: "2023",
       category: "AI",
+      details: [
+        "Built with Python and Django for the backend; HTML/JS for the frontend.",
+        "Minimax algorithm implemented for unbeatable AI gameplay.",
+        "User login system with session tracking and personalized game history.",
+        "Deployed frontend and backend using Vercel and PythonAnywhere (or similar).",
+      ],
       features: [
         "AI opponent with minimax algorithm",
         "User authentication and sessions",
@@ -84,6 +97,12 @@ export interface Project {
       demo: "/projects/project3/demo",
       year: "2023",
       category: "Computer Vision",
+      details: [
+        "Combined OpenCV-based motion detection with servo actuation via Arduino.",
+        "Processed live video feeds to detect objects near bus entry zones.",
+        "Fired water jets at detected threats using programmed logic.",
+        "Aimed at improving student safety in rough neighborhoods.",
+      ],
       features: [
         "Motion detection with OpenCV",
         "Servo control with Arduino",
@@ -110,6 +129,12 @@ export interface Project {
       demo: "/projects/project4/demo",
       year: "2022",
       category: "Game Dev",
+      details: [
+        "Built a custom WebSocket server in Node.js to handle real-time multiplayer.",
+        "Implemented physics calculations for momentum-based grappling.",
+        "Created multiple character skins and map variations.",
+        "Tested for sync consistency, input lag, and cross-browser performance.",
+      ],
       features: [
         "Real-time multiplayer with WebSockets",
         "Physics-based grappling and movement",
@@ -124,5 +149,37 @@ export interface Project {
         "Hosted and demoed at school hackathon",
       ],
     },
+    {
+      id: "project5",
+      title: "ProofIt",
+      image: "/assets/images/Project5.jpg",
+      video: "/assets/images/Project4Demo.mp4",
+      tags: ["React", "Node.js", "Typescript", "Next.js", "Tailwind"],
+      description: "ProofIt helps renters document property conditions with photos and notes, then send clean PDF reports via one-click email.",
+      github: "https://github.com/pereddysruthi21/ProofIt",
+      demo: "/projects/project5/demo",
+      year: "2025",
+      category: "Web App",
+      details: [
+        "Developed with React + Next.js for a smooth user experience.",
+        "Used Tailwind CSS for fast, responsive styling.",
+        "Built a Node.js backend with Nodemailer for sending emails with attachments.",
+        "Integrated PDF generation libraries to create clean, exportable reports.",
+      ],
+      features: [
+        "Image uploads with annotations and notes",
+        "PDF generation with room data and images",
+        "One click email delivery with file attachments",
+      ],
+      challenges: [
+        "Rendering images cleanly inside a generated PDF",
+        "Sending emails with attachments through a backend",
+      ],
+      achievements: [
+        "Used by first-time renters to secure deposits",
+        "Designed for ease of use and professionalism",
+      ],
+    }
+    
   ];
   
