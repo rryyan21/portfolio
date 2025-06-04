@@ -7,7 +7,9 @@ export default function Navbar() {
 
   return (
     <nav className="navbar fixed top-0 w-full bg-white shadow-md px-6 py-4 flex justify-between items-center z-50">
-      <div className="logo text-xl font-bold text-blue-600">Ryan Gupta</div>
+      <Link href="/#home" className="logo text-xl font-bold text-blue-600">
+        Ryan Gupta
+      </Link>
 
       <div className="nav-links hidden md:flex gap-8">
         <Link
