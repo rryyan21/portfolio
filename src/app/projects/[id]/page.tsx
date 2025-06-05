@@ -1,5 +1,8 @@
+"use client";
+
 import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function ProjectDetail({ params }: { params: { id: string } }) {
   const project = projects.find((p) => p.id === params.id);
@@ -72,60 +75,81 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
         </div>
 
         {/* Feature Sections */}
+        <motion.div
+          className="mt-16 bg-white p-8 rounded-xl shadow-md space-y-10"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          {project.details?.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+            >
+              <h2 className="text-2xl font-bold text-blue-700 mb-3 border-b pb-1 border-blue-100">
+                📘 Project Details
+              </h2>
+              <ul className="list-disc list-inside text-gray-700 space-y-2">
+                {project.details.map((detail, i) => (
+                  <li key={i}>{detail}</li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
 
-        {project.details?.length > 0 && (
-          <div className="mb-6">
-            <h3 className="text-sm font-semibold text-gray-800 mb-2">
-              Project Details
-            </h3>
-            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-              {project.details.map((detail, i) => (
-                <li key={i}>{detail}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <div className="mt-16 grid gap-10">
           {project.features?.length > 0 && (
-            <div>
-              <h2 className="text-2xl font-bold text-blue-700 mb-4">
-                Key Features
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <h2 className="text-2xl font-bold text-blue-700 mb-3 border-b pb-1 border-blue-100">
+                🚀 Key Features
               </h2>
               <ul className="list-disc list-inside text-gray-700 space-y-2">
                 {project.features.map((feature, i) => (
                   <li key={i}>{feature}</li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           )}
 
           {project.challenges?.length > 0 && (
-            <div>
-              <h2 className="text-2xl font-bold text-blue-700 mb-4">
-                Challenges Faced
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              <h2 className="text-2xl font-bold text-blue-700 mb-3 border-b pb-1 border-blue-100">
+                🧩 Challenges Faced
               </h2>
               <ul className="list-disc list-inside text-gray-700 space-y-2">
                 {project.challenges.map((challenge, i) => (
                   <li key={i}>{challenge}</li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           )}
 
           {project.achievements?.length > 0 && (
-            <div>
-              <h2 className="text-2xl font-bold text-blue-700 mb-4">
-                Achievements
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              <h2 className="text-2xl font-bold text-blue-700 mb-3 border-b pb-1 border-blue-100">
+                🏆 Achievements
               </h2>
               <ul className="list-disc list-inside text-gray-700 space-y-2">
                 {project.achievements.map((achievement, i) => (
                   <li key={i}>{achievement}</li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           )}
-        </div>
+        </motion.div>
 
         {/* Back Link */}
         <div className="mt-16">
