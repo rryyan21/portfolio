@@ -84,6 +84,7 @@ export default function About() {
               {[
                 "React",
                 "Node.js",
+                "Next.js",
                 "Tensorflow",
                 "Pytorch",
                 "Numpy",

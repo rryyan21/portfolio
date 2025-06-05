@@ -15,6 +15,7 @@ const tagStyleMap: Record<string, string> = {
   CSS: "border-blue-500 text-blue-500",
   Swift: "border-blue-500 text-blue-500",
   React: "border-yellow-500 text-yellow-500",
+  "Next.js": "border-yellow-500 text-yellow-500",
   "Node.js": "border-lime-500 text-lime-500",
   Tensorflow: "border-yellow-500 text-yellow-500",
   Pytorch: "border-yellow-500 text-yellow-500",

@@ -154,7 +154,7 @@ export interface Project {
       title: "ProofIt",
       image: "/assets/images/Project5.jpg",
       video: "/assets/images/Project4Demo.mp4",
-      tags: ["React", "Node.js", "Typescript", "Next.js", "Tailwind"],
+      tags: ["React", "Node.js", "TypeScript", "Next.js", "Tailwind"],
       description: "ProofIt helps renters document property conditions with photos and notes, then send clean PDF reports via one-click email.",
       github: "https://github.com/pereddysruthi21/ProofIt",
       demo: "/projects/project5/demo",
