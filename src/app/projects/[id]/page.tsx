@@ -3,9 +3,18 @@
 import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
+import { use } from "react";
+import Link from "next/link";
 
-export default function ProjectDetail({ params }: { params: { id: string } }) {
-  const project = projects.find((p) => p.id === params.id);
+export default function ProjectDetail({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  // Use React.use() to unwrap the Promise
+  const resolvedParams = use(params);
+  const project = projects.find((p) => p.id === resolvedParams.id);
+
   if (!project) return notFound();
 
   return (
@@ -153,9 +162,9 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
 
         {/* Back Link */}
         <div className="mt-16">
-          <a href="/#projects" className="text-blue-600 hover:underline">
+          <Link href="/#projects" className="text-blue-600 hover:underline">
             ← Back to Projects
-          </a>
+          </Link>
         </div>
       </div>
     </section>

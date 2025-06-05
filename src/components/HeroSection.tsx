@@ -22,7 +22,7 @@ export default function Hero() {
       {/* Hero Text */}
       <div className="flex flex-col gap-4 max-w-lg z-10">
         <h1 className="text-5xl font-bold text-slate-800">
-          Hi, I'm{" "}
+          Hi, I&apos;m{" "}
           <span className="bg-gradient-to-r from-blue-600 via-yellow-500 to-green-500 text-transparent bg-clip-text">
             Ryan
           </span>{" "}
