@@ -37,36 +37,38 @@ export default function ProjectCard({ project }: { project: Project }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
+      whileHover={{
+        y: -12,
+        transition: { duration: 0.3, ease: "easeOut" },
+      }}
+      className="group"
     >
       <Link
-        href={`/projects/${project.id}`}
-        className="project-card bg-white rounded-xl overflow-hidden shadow-md transform transition-transform hover:-translate-y-1 hover:shadow-lg"
+        href={
+          project.id === "WIP"
+            ? "/projects/coming-soon"
+            : `/projects/${project.id}`
+        }
+        className="project-card block bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 ease-out hover:shadow-2xl hover:shadow-black/10 border-2 border-transparent hover:border-black/30"
       >
-        <div className="relative w-full aspect-video overflow-hidden group rounded-t-xl">
+        <div className="relative w-full aspect-video overflow-hidden group/image rounded-t-xl">
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-t-xl"
+            className="object-cover transition-transform duration-300 group-hover/image:scale-105 rounded-t-xl"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity flex justify-center items-center rounded-t-xl">
-            <video
-              src={project.video}
-              controls
-              className="max-w-[90%] max-h-[90%] rounded-md"
-            />
-          </div>
         </div>
 
-        <div className="p-4 flex flex-col gap-2">
-          <h3 className="text-lg font-semibold text-gray-800">
+        <div className="p-6 flex flex-col gap-3">
+          <h3 className="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
             {project.title}
           </h3>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className={`text-xs px-3 py-1 rounded-full font-medium border-2 bg-white ${
+                className={`text-xs px-3 py-1 rounded-full font-medium border-2 bg-white transition-all duration-300 group-hover:scale-105 ${
                   tagStyleMap[tag] || "border-gray-300 text-gray-700"
                 }`}
               >
@@ -74,7 +76,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               </span>
             ))}
           </div>
-          <p className="text-sm text-gray-600 line-clamp-3">
+          <p className="text-sm text-gray-600 line-clamp-3 group-hover:text-gray-700 transition-colors duration-300">
             {project.description}
           </p>
         </div>

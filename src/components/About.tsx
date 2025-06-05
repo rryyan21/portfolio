@@ -25,7 +25,7 @@ export default function About() {
       title: "Research & Teaching",
       timeframe: "2024 – Present",
       description:
-        "Involved in research on lane centering controls at the University of Waterloo's Alternate Fuels Team.",
+        "Researching model predictive controllers for lane centering at the University of Waterloo's Alternate Fuels Team.",
     },
     {
       icon: <Laptop className="text-green-600 w-6 h-6" />,

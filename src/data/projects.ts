@@ -90,7 +90,7 @@ export interface Project {
       title: "W.A.I.L.A. - Automated Bus Safety System",
       image: "/assets/images/Project3.jpg",
       video: "/assets/images/Project3Demo.mp4",
-      tags: ["Python", "OpenCV", "Arduino", "Computer Vision"],
+      tags: ["Python", "OpenCV", "Arduino"],
       description:
         "Automatic Water Gun System for Bus Safety utilizing Computer Vision and Arduino.",
       github: "/projects/project3/demo",
@@ -178,6 +178,27 @@ export interface Project {
       achievements: [
         "Used by first-time renters to secure deposits",
         "Designed for ease of use and professionalism",
+      ],
+    },
+    {
+      id: "WIP",
+      title: "Work in progress",
+      image: "/assets/images/WIP.png",
+      video: "",
+      tags: [],
+      description: "",
+      github: "",
+      demo: "",
+      year: "",
+      category: "",
+      details: [
+      
+      ],
+      features: [
+      ],
+      challenges: [
+      ],
+      achievements: [
       ],
     }
     
