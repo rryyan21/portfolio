@@ -1,8 +1,10 @@
 import "./globals.css";
+import "../components/WalkingAnimation.css";
+import "../components/PixelSpotlight.css";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import NavBar from "@/components/NavBar";
-import AIChat from "@/components/AIChat";
+import PixelGuide from "@/components/PixelGuide";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,7 +27,7 @@ export default function RootLayout({
       <body className="font-sans">
         <NavBar />
         {children}
-        <AIChat />
+        <PixelGuide />
       </body>
     </html>
   );

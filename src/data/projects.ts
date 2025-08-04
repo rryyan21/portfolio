@@ -16,6 +16,42 @@ export interface Project {
   }
   
     export const projects: Project[] = [
+      {
+        id: "project6",
+        title: "Compli - AI-Powered job preparation",
+        image: "/assets/images/Project6.jpg",
+        video: "/assets/images/Project4Demo.mp4",
+        tags: ["TypeScript", "Python", "React", "Next.js", "Tailwind"],
+              description:
+          "An all-in-one job preparation platform that helps you research companies and prepare for interviews.",
+        github: "https://github.com/rryyan21/compli",
+        demo: "/projects/project6/demo",
+        year: "2025",
+              category: "AI",
+        details: [
+          "Developed an all-in-one platform combining company research, interview preparation, and networking tools.",
+          "Built with React and Next.js frontend, integrated with AI-powered search and data aggregation systems.",
+          "Implemented secure user authentication with Google Sign-in and personal dashboard functionality.",
+          "Deployed on modern cloud infrastructure with 99.99% uptime and industry-standard security practices.",
+        ],
+        features: [
+          "Company search with instant access to official websites, summaries, and news",
+          "Interview insights database with real questions, experiences, and prep plans",
+          "Contact discovery to find LinkedIn profiles by company, role, or university",
+          "Personal dashboard to save companies and track research progress",
+          "Privacy-focused design with secure data handling",
+        ],
+        challenges: [
+          "Integrating multiple data sources for comprehensive company information",
+          "Building fast, reliable search functionality across diverse datasets",
+          "Designing an intuitive interface that reduces job search complexity",
+        ],
+        achievements: [
+          "Successfully launched beta version with positive user feedback",
+          "Created a unified platform that eliminates tab-switching during job searches",
+          "Implemented robust privacy and security measures for user data protection",
+        ],
+      },
     {
       id: "project5",
       title: "ProofIt",
@@ -47,42 +83,70 @@ export interface Project {
         "Designed for ease of use and professionalism",
       ],
     },
-     {
-       id: "project6",
-       title: "Compli - AI-Powered job preparation",
-       image: "/assets/images/Project6.jpg",
-       video: "/assets/images/Project4Demo.mp4",
-       tags: ["TypeScript", "Python", "React", "Next.js", "Tailwind"],
-             description:
-         "An all-in-one job preparation platform that helps you research companies and prepare for interviews.",
-       github: "https://github.com/rryyan21/compli",
-       demo: "/projects/project6/demo",
-       year: "2025",
-             category: "AI",
-       details: [
-         "Developed an all-in-one platform combining company research, interview preparation, and networking tools.",
-         "Built with React and Next.js frontend, integrated with AI-powered search and data aggregation systems.",
-         "Implemented secure user authentication with Google Sign-in and personal dashboard functionality.",
-         "Deployed on modern cloud infrastructure with 99.99% uptime and industry-standard security practices.",
-       ],
-       features: [
-         "Company search with instant access to official websites, summaries, and news",
-         "Interview insights database with real questions, experiences, and prep plans",
-         "Contact discovery to find LinkedIn profiles by company, role, or university",
-         "Personal dashboard to save companies and track research progress",
-         "Privacy-focused design with secure data handling",
-       ],
-       challenges: [
-         "Integrating multiple data sources for comprehensive company information",
-         "Building fast, reliable search functionality across diverse datasets",
-         "Designing an intuitive interface that reduces job search complexity",
-       ],
-       achievements: [
-         "Successfully launched beta version with positive user feedback",
-         "Created a unified platform that eliminates tab-switching during job searches",
-         "Implemented robust privacy and security measures for user data protection",
-       ],
-     },
+    {
+      id: "project3",
+      title: "W.A.I.L.A. - Automated Bus Safety System",
+      image: "/assets/images/Project3.jpg",
+      video: "/assets/images/Project3Demo.mp4",
+      tags: ["Python", "OpenCV", "Arduino"],
+      description:
+        "Automatic Water Gun System for Bus Safety utilizing Computer Vision and Arduino.",
+      github: "/projects/project3/demo",
+      demo: "/projects/project3/demo",
+      year: "2023",
+      category: "Computer Vision",
+      details: [
+        "Combined OpenCV-based motion detection with servo actuation via Arduino.",
+        "Processed live video feeds to detect objects near bus entry zones.",
+        "Fired water jets at detected threats using programmed logic.",
+        "Aimed at improving student safety in rough neighborhoods.",
+      ],
+      features: [
+        "Motion detection with OpenCV",
+        "Servo control with Arduino",
+        "Real-time alerts and logs",
+      ],
+      challenges: [
+        "Tuning CV models for outdoor conditions",
+        "Integrating Python detection with Arduino firing",
+      ],
+      achievements: [
+        "Worked in all weather conditions",
+        "Used by school for pilot demo",
+      ],
+    },
+    {
+      id: "project4",
+      title: "Multiplayer Grapple Game",
+      image: "/assets/images/Project4.jpg",
+      video: "/assets/images/Project4Demo.mp4",
+      tags: ["JavaScript", "Node.js", "HTML", "CSS"],
+      description:
+        "Multiplayer web game featuring physics-based grappling hooks and real-time interaction.",
+      github: "https://github.com/rryyan21/Grapple-Arena",
+      demo: "/projects/project4/demo",
+      year: "2022",
+      category: "Game Dev",
+      details: [
+        "Built a custom WebSocket server in Node.js to handle real-time multiplayer.",
+        "Implemented physics calculations for momentum-based grappling.",
+        "Created multiple character skins and map variations.",
+        "Tested for sync consistency, input lag, and cross-browser performance.",
+      ],
+      features: [
+        "Real-time multiplayer with WebSockets",
+        "Physics-based grappling and movement",
+        "Custom maps and skins",
+      ],
+      challenges: [
+        "Handling collisions in multiplayer",
+        "Syncing inputs without lag",
+      ],
+      achievements: [
+        "Playable by up to 4 users online",
+        "Hosted and demoed at school hackathon",
+      ],
+    },
     {
       id: "project1",
       title: "Janky Hollow Knight",
@@ -150,70 +214,6 @@ export interface Project {
       achievements: [
         "Successfully deployed with Vercel",
         "Achieved 90% win rate against human testers",
-      ],
-    },
-    {
-      id: "project3",
-      title: "W.A.I.L.A. - Automated Bus Safety System",
-      image: "/assets/images/Project3.jpg",
-      video: "/assets/images/Project3Demo.mp4",
-      tags: ["Python", "OpenCV", "Arduino"],
-      description:
-        "Automatic Water Gun System for Bus Safety utilizing Computer Vision and Arduino.",
-      github: "/projects/project3/demo",
-      demo: "/projects/project3/demo",
-      year: "2023",
-      category: "Computer Vision",
-      details: [
-        "Combined OpenCV-based motion detection with servo actuation via Arduino.",
-        "Processed live video feeds to detect objects near bus entry zones.",
-        "Fired water jets at detected threats using programmed logic.",
-        "Aimed at improving student safety in rough neighborhoods.",
-      ],
-      features: [
-        "Motion detection with OpenCV",
-        "Servo control with Arduino",
-        "Real-time alerts and logs",
-      ],
-      challenges: [
-        "Tuning CV models for outdoor conditions",
-        "Integrating Python detection with Arduino firing",
-      ],
-      achievements: [
-        "Worked in all weather conditions",
-        "Used by school for pilot demo",
-      ],
-    },
-    {
-      id: "project4",
-      title: "Multiplayer Grapple Game",
-      image: "/assets/images/Project4.jpg",
-      video: "/assets/images/Project4Demo.mp4",
-      tags: ["JavaScript", "Node.js", "HTML", "CSS"],
-      description:
-        "Multiplayer web game featuring physics-based grappling hooks and real-time interaction.",
-      github: "https://github.com/rryyan21/Grapple-Arena",
-      demo: "/projects/project4/demo",
-      year: "2022",
-      category: "Game Dev",
-      details: [
-        "Built a custom WebSocket server in Node.js to handle real-time multiplayer.",
-        "Implemented physics calculations for momentum-based grappling.",
-        "Created multiple character skins and map variations.",
-        "Tested for sync consistency, input lag, and cross-browser performance.",
-      ],
-      features: [
-        "Real-time multiplayer with WebSockets",
-        "Physics-based grappling and movement",
-        "Custom maps and skins",
-      ],
-      challenges: [
-        "Handling collisions in multiplayer",
-        "Syncing inputs without lag",
-      ],
-      achievements: [
-        "Playable by up to 4 users online",
-        "Hosted and demoed at school hackathon",
       ],
     },
      {

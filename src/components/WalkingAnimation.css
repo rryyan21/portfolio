@@ -1,0 +1,63 @@
+/* Robot Walking Animation Styles */
+@keyframes robot-walk {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-1px) translateX(1px);
+  }
+  50% {
+    transform: translateY(0px) translateX(2px);
+  }
+  75% {
+    transform: translateY(-1px) translateX(1px);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+@keyframes robot-bounce {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.animate-walk {
+  animation: robot-walk 0.8s ease-in-out infinite,
+    robot-bounce 0.4s ease-in-out infinite;
+}
+
+/* Robot leg stepping animation */
+@keyframes robot-leg-step {
+  0%,
+  100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-2px) rotateX(15deg);
+  }
+}
+
+.walking-legs {
+  animation: robot-leg-step 0.5s ease-in-out infinite alternate;
+}
+
+/* Glowing eye animation */
+@keyframes eye-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 4px #00bcd4;
+  }
+  50% {
+    box-shadow: 0 0 8px #00bcd4, 0 0 12px #00bcd4;
+  }
+}
+
+.robot-eyes {
+  animation: eye-glow 2s ease-in-out infinite;
+}
