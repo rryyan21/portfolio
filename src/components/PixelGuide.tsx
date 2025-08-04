@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "@/data/projects";
 
@@ -272,9 +272,7 @@ export default function PixelGuide() {
     }, walkingTime + 400); // Walking time + small buffer
   };
 
-  const moveToNextStep = () => {
-    moveToStep(currentTourStep);
-  };
+
 
   const getAIResponse = (userMessage: string): string => {
     const message = userMessage.toLowerCase();
@@ -496,7 +494,7 @@ export default function PixelGuide() {
             <div className="bg-blue-500 text-white p-3 rounded-t-lg flex justify-between items-center">
               <div>
                 <h3 className="font-semibold text-sm">Pixel Guide 🤖</h3>
-                <p className="text-xs opacity-90">Ask me about Ryan's work!</p>
+                <p className="text-xs opacity-90">Ask me about Ryan&apos;s work!</p>
               </div>
               <button 
                 onClick={() => setIsChatOpen(false)}
