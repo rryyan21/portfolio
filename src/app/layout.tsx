@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import NavBar from "@/components/NavBar";
+import AIChat from "@/components/AIChat";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className="font-sans">
         <NavBar />
         {children}
+        <AIChat />
       </body>
     </html>
   );

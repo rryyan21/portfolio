@@ -15,7 +15,74 @@ export interface Project {
     achievements: string[];
   }
   
-  export const projects: Project[] = [
+    export const projects: Project[] = [
+    {
+      id: "project5",
+      title: "ProofIt",
+      image: "/assets/images/Project5.jpg",
+      video: "/assets/images/Project4Demo.mp4",
+      tags: ["React", "Node.js", "TypeScript", "Next.js", "Tailwind"],
+      description: "ProofIt helps renters document property conditions with photos and notes, then send clean PDF reports via one-click email.",
+      github: "https://github.com/pereddysruthi21/ProofIt",
+      demo: "/projects/project5/demo",
+      year: "2025",
+      category: "Web App",
+      details: [
+        "Developed with React + Next.js for a smooth user experience.",
+        "Used Tailwind CSS for fast, responsive styling.",
+        "Built a Node.js backend with Nodemailer for sending emails with attachments.",
+        "Integrated PDF generation libraries to create clean, exportable reports.",
+      ],
+      features: [
+        "Image uploads with annotations and notes",
+        "PDF generation with room data and images",
+        "One click email delivery with file attachments",
+      ],
+      challenges: [
+        "Rendering images cleanly inside a generated PDF",
+        "Sending emails with attachments through a backend",
+      ],
+      achievements: [
+        "Used by first-time renters to secure deposits",
+        "Designed for ease of use and professionalism",
+      ],
+    },
+     {
+       id: "project6",
+       title: "Compli - AI-Powered job preparation",
+       image: "/assets/images/Project6.jpg",
+       video: "/assets/images/Project4Demo.mp4",
+       tags: ["TypeScript", "Python", "React", "Next.js", "Tailwind"],
+             description:
+         "An all-in-one job preparation platform that helps you research companies and prepare for interviews.",
+       github: "https://github.com/rryyan21/compli",
+       demo: "/projects/project6/demo",
+       year: "2025",
+             category: "AI",
+       details: [
+         "Developed an all-in-one platform combining company research, interview preparation, and networking tools.",
+         "Built with React and Next.js frontend, integrated with AI-powered search and data aggregation systems.",
+         "Implemented secure user authentication with Google Sign-in and personal dashboard functionality.",
+         "Deployed on modern cloud infrastructure with 99.99% uptime and industry-standard security practices.",
+       ],
+       features: [
+         "Company search with instant access to official websites, summaries, and news",
+         "Interview insights database with real questions, experiences, and prep plans",
+         "Contact discovery to find LinkedIn profiles by company, role, or university",
+         "Personal dashboard to save companies and track research progress",
+         "Privacy-focused design with secure data handling",
+       ],
+       challenges: [
+         "Integrating multiple data sources for comprehensive company information",
+         "Building fast, reliable search functionality across diverse datasets",
+         "Designing an intuitive interface that reduces job search complexity",
+       ],
+       achievements: [
+         "Successfully launched beta version with positive user feedback",
+         "Created a unified platform that eliminates tab-switching during job searches",
+         "Implemented robust privacy and security measures for user data protection",
+       ],
+     },
     {
       id: "project1",
       title: "Janky Hollow Knight",
@@ -149,39 +216,8 @@ export interface Project {
         "Hosted and demoed at school hackathon",
       ],
     },
-    {
-      id: "project5",
-      title: "ProofIt",
-      image: "/assets/images/Project5.jpg",
-      video: "/assets/images/Project4Demo.mp4",
-      tags: ["React", "Node.js", "TypeScript", "Next.js", "Tailwind"],
-      description: "ProofIt helps renters document property conditions with photos and notes, then send clean PDF reports via one-click email.",
-      github: "https://github.com/pereddysruthi21/ProofIt",
-      demo: "/projects/project5/demo",
-      year: "2025",
-      category: "Web App",
-      details: [
-        "Developed with React + Next.js for a smooth user experience.",
-        "Used Tailwind CSS for fast, responsive styling.",
-        "Built a Node.js backend with Nodemailer for sending emails with attachments.",
-        "Integrated PDF generation libraries to create clean, exportable reports.",
-      ],
-      features: [
-        "Image uploads with annotations and notes",
-        "PDF generation with room data and images",
-        "One click email delivery with file attachments",
-      ],
-      challenges: [
-        "Rendering images cleanly inside a generated PDF",
-        "Sending emails with attachments through a backend",
-      ],
-      achievements: [
-        "Used by first-time renters to secure deposits",
-        "Designed for ease of use and professionalism",
-      ],
-    },
-    {
-      id: "WIP",
+     {
+       id: "WIP",
       title: "Work in progress",
       image: "/assets/images/WIP.png",
       video: "",
