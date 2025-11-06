@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import NavBar from "@/components/NavBar";
+import InteractiveBackground from "@/components/InteractiveBackground";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,8 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="font-sans">
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <body className="font-sans" suppressHydrationWarning>
+        <InteractiveBackground />
         <NavBar />
         {children}
       </body>
