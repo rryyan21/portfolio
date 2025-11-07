@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { Phone, Github, Linkedin } from "lucide-react";
 
 export default function Hero() {
   const [isFixed, setIsFixed] = useState(false);
@@ -29,18 +30,40 @@ export default function Hero() {
         <p className="text-gray-600 text-lg">
           Full Stack Developer & Autonomous Engineer
         </p>
+        {/* Social Icons */}
+        <div className="flex gap-4 mt-2">
+          <a
+            href="tel:+15307869574"
+            className="text-gray-600 hover:text-blue-600 transition-colors"
+            aria-label="Phone"
+          >
+            <Phone size={24} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ryan--gupta/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-blue-600 transition-colors"
+            aria-label="Linkedin"
+          >
+            <Linkedin size={24} />
+          </a>
+          <a
+            href="https://github.com/rryyan21"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-blue-600 transition-colors"
+            aria-label="GitHub"
+          >
+            <Github size={24} />
+          </a>
+        </div>
         <div className="flex gap-4 mt-4">
           <a
             href="#projects"
             className="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700"
           >
             View My Work
-          </a>
-          <a
-            href="#contact"
-            className="border border-blue-600 text-blue-600 px-6 py-2 rounded-md font-medium hover:bg-blue-50"
-          >
-            Contact Me
           </a>
         </div>
       </div>
@@ -49,7 +72,7 @@ export default function Hero() {
       <div className="relative w-80 h-80 z-10 flex items-center justify-center">
         <div className="relative w-56 h-56 rounded-full overflow-hidden border-4 border-blue-600 shadow-xl">
           <Image
-            src="/assets/images/mainImg.jpg"
+            src="/assets/images/RyanHeadshot.jpg"
             alt="Profile Picture"
             width={250}
             height={250}

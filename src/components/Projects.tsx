@@ -5,7 +5,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="projects py-24 px-6 bg-gradient-to-br from-white to-slate-100"
+      className="projects py-24 px-6"
     >
       <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
         My Projects

@@ -47,7 +47,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="about py-24 px-6 bg-gradient-to-br from-slate-100 to-white relative z-10"
+      className="about py-24 px-6 relative z-10"
     >
       <div className="max-w-5xl mx-auto text-center">
         {/* Skills Grid */}
@@ -77,7 +77,7 @@ export default function About() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-yellow-500 mb-4">
+            <h3 className="text-xl font-semibold text-blue-600 mb-4">
               Frameworks
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -94,7 +94,7 @@ export default function About() {
               ].map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border-2 border-yellow-500 text-yellow-500 px-4 py-1 text-sm shadow-sm bg-white"
+                  className="rounded-full border-2 border-blue-600 text-blue-600 px-4 py-1 text-sm shadow-sm bg-white"
                 >
                   {tag}
                 </span>
@@ -103,12 +103,12 @@ export default function About() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-green-500 mb-4">Tools</h3>
+            <h3 className="text-xl font-semibold text-blue-600 mb-4">Tools</h3>
             <div className="flex flex-wrap gap-2">
               {["Eclipse", "Git", "GitLab", "Replit"].map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border-2 border-green-500 text-green-500 px-4 py-1 text-sm shadow-sm bg-white"
+                  className="rounded-full border-2 border-blue-600 text-blue-600 px-4 py-1 text-sm shadow-sm bg-white"
                 >
                   {tag}
                 </span>

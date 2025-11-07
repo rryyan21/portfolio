@@ -30,12 +30,6 @@ export default function Navbar() {
         >
           Projects
         </Link>
-        <Link
-          href="/#contact"
-          className="text-black hover:text-blue-600 font-medium"
-        >
-          Contact
-        </Link>
       </div>
 
       <div
@@ -57,9 +51,6 @@ export default function Navbar() {
           </Link>
           <Link href="/#projects" onClick={() => setIsOpen(false)}>
             Projects
-          </Link>
-          <Link href="/#contact" onClick={() => setIsOpen(false)}>
-            Contact
           </Link>
         </div>
       )}
