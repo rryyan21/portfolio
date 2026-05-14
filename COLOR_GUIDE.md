@@ -106,7 +106,7 @@ All components use Tailwind's `teal-*` classes. To change colors globally, repla
 #### Files to Update:
 
 - `src/components/HeroSection.tsx` - Buttons, social links, profile ring
-- `src/components/About.tsx` - Headings, icons, tags, timeline
+- `src/app/story/page.tsx` - Story headings, experience cards, skill tags
 - `src/components/ProjectCard.tsx` - Card borders, hover effects, tags
 - `src/components/NavBar.tsx` - Logo, links, borders
 

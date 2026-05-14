@@ -1,19 +1,23 @@
+export type ProjectKind = "app" | "game" | "research";
+
 export interface Project {
-    id: string;
-    title: string;
-    image: string;
-    video: string;
-    tags: string[];
-    description: string;
-    github: string;
-    demo: string;
-    year: string;
-    category: string;
-    features: string[];
-    details: string[];
-    challenges: string[];
-    achievements: string[];
-  }
+  id: string;
+  title: string;
+  image: string;
+  video: string;
+  tags: string[];
+  description: string;
+  github: string;
+  demo: string;
+  year: string;
+  category: string;
+  /** Used for home page filter chips */
+  kind: ProjectKind;
+  features: string[];
+  details: string[];
+  challenges: string[];
+  achievements: string[];
+}
   
     export const projects: Project[] = [
       {
@@ -27,7 +31,8 @@ export interface Project {
         github: "https://github.com/rryyan21/compli",
         demo: "/projects/project6/demo",
         year: "2025",
-              category: "AI",
+        category: "AI",
+        kind: "app",
         details: [
           "Developed an all-in-one platform combining company research, interview preparation, and networking tools.",
           "Built with React and Next.js frontend, integrated with AI-powered search and data aggregation systems.",
@@ -63,6 +68,7 @@ export interface Project {
       demo: "/projects/project5/demo",
       year: "2025",
       category: "Web App",
+      kind: "app",
       details: [
         "Developed with React + Next.js for a smooth user experience.",
         "Used Tailwind CSS for fast, responsive styling.",
@@ -95,6 +101,7 @@ export interface Project {
       demo: "/projects/project3/demo",
       year: "2023",
       category: "Computer Vision",
+      kind: "research",
       details: [
         "Combined OpenCV-based motion detection with servo actuation via Arduino.",
         "Processed live video feeds to detect objects near bus entry zones.",
@@ -127,6 +134,7 @@ export interface Project {
       demo: "/projects/project4/demo",
       year: "2022",
       category: "Game Dev",
+      kind: "game",
       details: [
         "Built a custom WebSocket server in Node.js to handle real-time multiplayer.",
         "Implemented physics calculations for momentum-based grappling.",
@@ -159,6 +167,7 @@ export interface Project {
       demo: "/projects/project1/demo",
       year: "2024",
       category: "Game Development",
+      kind: "game",
       details: [
         "Inspired by the Hollow Knight game, created using Greenfoot in Java.",
         "Focused on core OOP concepts like inheritance, polymorphism, and abstraction.",
@@ -196,6 +205,7 @@ export interface Project {
       demo: "/projects/project2/demo",
       year: "2023",
       category: "AI",
+      kind: "app",
       details: [
         "Built with Python and Django for the backend; HTML/JS for the frontend.",
         "Minimax algorithm implemented for unbeatable AI gameplay.",
@@ -216,8 +226,8 @@ export interface Project {
         "Achieved 90% win rate against human testers",
       ],
     },
-     {
-       id: "WIP",
+    {
+      id: "WIP",
       title: "Work in progress",
       image: "/assets/images/WIP.png",
       video: "",
@@ -227,6 +237,7 @@ export interface Project {
       demo: "",
       year: "",
       category: "",
+      kind: "app",
       details: [
       
       ],
