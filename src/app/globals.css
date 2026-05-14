@@ -90,22 +90,6 @@ body {
   background-color: var(--accent-muted);
 }
 
-@keyframes title-ember {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 0.9;
-    transform: translateY(-18px);
-  }
-}
-
-.title-screen-ember {
-  animation: title-ember 4.5s ease-in-out infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -113,9 +97,5 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .title-screen-ember {
-    animation: none !important;
   }
 }

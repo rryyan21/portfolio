@@ -9,13 +9,6 @@ const nextConfig: NextConfig = {
     maxInactiveAge: 5 * 60 * 1000,
     pagesBufferLength: 25,
   },
-  webpack: (config, { dev }) => {
-    if (dev) {
-      // Avoid webpack dev cache pointing at removed chunks (`Cannot find module './447.js'`)
-      config.cache = false;
-    }
-    return config;
-  },
 };
 
 export default nextConfig;

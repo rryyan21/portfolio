@@ -25,7 +25,7 @@ export const mainNav = [
   { href: "/contact", label: "Contact" },
 ] as const satisfies readonly MainNavEntry[];
 
-/** Title screen menu (skip Home — player is already there) */
+/** Home hero “chapter” menu — mirrors main nav with short hints */
 export const titleMenu = [
   { num: "01", href: "/story", title: "Story", hint: "Experiences & stack" },
   { num: "02", href: "/music", title: "Soundtrack", hint: "What I play while building" },
