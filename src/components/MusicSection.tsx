@@ -52,7 +52,11 @@ export default function MusicSection() {
             className="flex max-w-md items-center gap-2 text-sm"
             style={{ color: spotify.subtext }}
           >
-            <Disc3 className="h-4 w-4 shrink-0" style={{ color: spotify.green }} aria-hidden />
+            <Disc3
+              className="h-4 w-4 shrink-0"
+              style={{ color: spotify.green }}
+              aria-hidden
+            />
             <span>No in-browser playback — metadata only from Spotify.</span>
           </p>
         </div>
@@ -136,14 +140,20 @@ export default function MusicSection() {
                 <p className="font-display text-2xl font-bold leading-tight tracking-tight text-white md:text-3xl">
                   {live.track.name}
                 </p>
-                <p className="mt-2 text-base font-medium" style={{ color: spotify.subtext }}>
+                <p
+                  className="mt-2 text-base font-medium"
+                  style={{ color: spotify.subtext }}
+                >
                   {live.track.artist}
                 </p>
                 <p className="mt-1 text-sm" style={{ color: spotify.subtext }}>
                   {live.track.album}
                 </p>
                 {live.trackSource === "recent" && live.track.playedAt ? (
-                  <p className="mt-3 text-xs opacity-80" style={{ color: spotify.subtext }}>
+                  <p
+                    className="mt-3 text-xs opacity-80"
+                    style={{ color: spotify.subtext }}
+                  >
                     Logged at{" "}
                     {(() => {
                       const d = new Date(live.track.playedAt);
@@ -170,11 +180,12 @@ export default function MusicSection() {
             style={{ color: spotify.subtext }}
           >
             Colors on this page follow your{" "}
-            <strong className="font-medium text-white/90">now playing</strong> track when
-            Spotify reports one (cover art may fall back if missing). Otherwise they follow your{" "}
-            <strong className="font-medium text-white/90">most recent</strong> listen from the
-            Spotify account you authorized. Refreshes about every {pollSeconds} seconds on this
-            page only.
+            <strong className="font-medium text-white/90">now playing</strong>{" "}
+            track when Spotify reports one (cover art may fall back if missing).
+            Otherwise they follow your{" "}
+            <strong className="font-medium text-white/90">most recent</strong>{" "}
+            listen from the Spotify account you authorized. Refreshes about
+            every {pollSeconds} seconds on this page only.
           </p>
         </div>
 
@@ -182,14 +193,19 @@ export default function MusicSection() {
         <div className="mt-8 grid gap-4 lg:grid-cols-2 lg:gap-5">
           <article
             className="flex flex-col rounded-lg border p-5 md:p-6"
-            style={{ backgroundColor: spotify.card, borderColor: spotify.border }}
+            style={{
+              backgroundColor: spotify.card,
+              borderColor: spotify.border,
+            }}
           >
             <div className="flex items-center gap-2 text-accent">
               <Music className="h-5 w-5" strokeWidth={1.75} aria-hidden />
-              <h2 className="font-display text-base font-semibold text-white">Heavy rotation</h2>
+              <h2 className="font-display text-base font-semibold text-white">
+                Heavy rotation
+              </h2>
             </div>
             <p className="mt-1 text-sm" style={{ color: spotify.subtext }}>
-              One track I keep coming back to — edit in{" "}
+              One track I keep coming back to
               <code
                 className="rounded px-1.5 py-0.5 text-xs text-white/90"
                 style={{ backgroundColor: spotify.elevated }}
@@ -201,14 +217,22 @@ export default function MusicSection() {
 
             <div
               className="mt-6 rounded-lg border p-5"
-              style={{ backgroundColor: spotify.elevated, borderColor: spotify.border }}
+              style={{
+                backgroundColor: spotify.elevated,
+                borderColor: spotify.border,
+              }}
             >
               <p className="font-display text-2xl font-bold leading-tight tracking-tight text-white md:text-3xl">
                 {onRepeat.title}
               </p>
-              <p className="mt-2 text-base font-semibold text-accent">{onRepeat.artist}</p>
+              <p className="mt-2 text-base font-semibold text-accent">
+                {onRepeat.artist}
+              </p>
               {onRepeat.note ? (
-                <p className="mt-4 text-sm leading-relaxed" style={{ color: spotify.subtext }}>
+                <p
+                  className="mt-4 text-sm leading-relaxed"
+                  style={{ color: spotify.subtext }}
+                >
                   {onRepeat.note}
                 </p>
               ) : null}
@@ -228,11 +252,16 @@ export default function MusicSection() {
 
           <div
             className="flex flex-col rounded-lg border p-5 md:p-6"
-            style={{ backgroundColor: spotify.card, borderColor: spotify.border }}
+            style={{
+              backgroundColor: spotify.card,
+              borderColor: spotify.border,
+            }}
           >
             <div className="flex items-center gap-2 text-gold">
               <Library className="h-5 w-5" strokeWidth={1.75} aria-hidden />
-              <h2 className="font-display text-base font-semibold text-white">Shelf picks</h2>
+              <h2 className="font-display text-base font-semibold text-white">
+                Shelf picks
+              </h2>
             </div>
             <p className="mt-1 text-sm" style={{ color: spotify.subtext }}>
               Albums that shaped how I think about space, tension, and payoff.
@@ -252,11 +281,17 @@ export default function MusicSection() {
                   <p className="font-display text-base font-semibold leading-snug text-white transition-colors group-hover:text-accent-soft">
                     {album.title}
                   </p>
-                  <p className="mt-1 text-sm" style={{ color: spotify.subtext }}>
+                  <p
+                    className="mt-1 text-sm"
+                    style={{ color: spotify.subtext }}
+                  >
                     {album.artist}
                   </p>
                   {album.note ? (
-                    <p className="mt-2 text-xs leading-relaxed opacity-90" style={{ color: spotify.subtext }}>
+                    <p
+                      className="mt-2 text-xs leading-relaxed opacity-90"
+                      style={{ color: spotify.subtext }}
+                    >
                       {album.note}
                     </p>
                   ) : null}
