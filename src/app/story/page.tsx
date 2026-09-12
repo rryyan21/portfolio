@@ -1,5 +1,4 @@
-import StoryView from "@/components/StoryView";
-
+import { redirect } from "next/navigation";
 export default function StoryPage() {
-  return <StoryView />;
+  redirect("/about");
 }

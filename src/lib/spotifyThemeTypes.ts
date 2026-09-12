@@ -1,4 +1,4 @@
-/** Keep in sync with any client that polls `/api/spotify/theme` (e.g. MusicThemeShell). */
+/** Keep in sync with any client that polls `/api/spotify/theme` (SpotifyThemeProvider). */
 export const SPOTIFY_THEME_POLL_MS = 90_000;
 
 export type SpotifyThemePayload = {
@@ -14,6 +14,9 @@ export type SpotifyThemePayload = {
     playedAt?: string;
   };
   theme?: {
+    "--ink": string;
+    "--muted": string;
+    "--border": string;
     "--page-bg": string;
     "--surface": string;
     "--surface-elevated": string;

@@ -1,10 +1,6 @@
-/** Short lines shown under the hero — edit anytime. */
-export const heroSignals = [
-  { label: "Role", value: "Full-stack & autonomy" },
-  { label: "School", value: "Michigan — CS & Robotics" },
-  { label: "Sound", value: "Hip-hop, jazz, film scores" },
-  { label: "Cook", value: "Big flavors, small experiments" },
-] as const;
-
 export const heroTagline =
-  "I build software and autonomy-minded systems for the real world. Off the clock: records, playlists, and whatever deserves a second helping from the stove.";
+  "An idea, a little curiosity, and something to show for it.";
+export const availability =
+  "Open to Summer 2027 software engineering internships";
+export const about =
+  "I’m Ryan, a computer science and robotics student at Michigan. My projects range from searching company reports to making resume edits less tedious, with a few games along the way. Outside of building things, I spend time playing guitar or finding another café to try.";

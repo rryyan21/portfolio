@@ -2,7 +2,7 @@
 export function rgbToHsl(
   r: number,
   g: number,
-  b: number
+  b: number,
 ): { h: number; s: number; l: number } {
   r /= 255;
   g /= 255;
@@ -33,7 +33,7 @@ export function rgbToHsl(
 export function hslToRgb(
   h: number,
   s: number,
-  l: number
+  l: number,
 ): { r: number; g: number; b: number } {
   h /= 360;
   s /= 100;
@@ -74,7 +74,9 @@ export function rgbToHex(r: number, g: number, b: number): string {
   return `#${c(r)}${c(g)}${c(b)}`;
 }
 
-export function parseHex(hex: string): { r: number; g: number; b: number } | null {
+export function parseHex(
+  hex: string,
+): { r: number; g: number; b: number } | null {
   const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
   if (!m) return null;
   const n = parseInt(m[1], 16);
@@ -95,7 +97,7 @@ export function luminance(r: number, g: number, b: number): number {
 /** WCAG contrast ratio (1-21) */
 export function contrastRatio(
   fg: [number, number, number],
-  bg: [number, number, number]
+  bg: [number, number, number],
 ): number {
   const L1 = luminance(fg[0], fg[1], fg[2]) + 0.05;
   const L2 = luminance(bg[0], bg[1], bg[2]) + 0.05;

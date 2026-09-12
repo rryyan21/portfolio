@@ -1,192 +1,54 @@
-# Color Guide - Where to Change Colors
+# Theme and color guide
 
-## 🎨 Quick Color Reference
+The portfolio is light-first: warm paper, near-black text, forest-green primary accents, and a clay secondary accent. It uses one “Chapters” metaphor throughout. There is no dark-mode toggle or glowing background.
 
-### Main Colors Used:
+## Default palette
 
-- **Primary Accent**: `#14b8a6` (Teal) - Used for text, glows, accents
-- **Background**: `#0a0a0f` (Dark blue-black)
-- **Secondary Background**: `#0f0f15` (Slightly lighter for cards)
-- **Cyan Accent**: `rgba(6, 182, 212, ...)` - Used in glitch effects
+Defaults live in `:root` in `src/app/globals.css`.
 
----
+| Variable             | Default       | Purpose                                   |
+| -------------------- | ------------- | ----------------------------------------- |
+| `--page-bg`          | `#faf7f2`     | Page paper                                |
+| `--surface`          | `#fffdf9`     | Cards and panels                          |
+| `--surface-elevated` | `#f1ece4`     | Tags and inset surfaces                   |
+| `--ink`              | `#242820`     | Headings and body text                    |
+| `--muted`            | `#66685f`     | Secondary text                            |
+| `--border`           | `#deded3`     | Dividers and subtle card outlines         |
+| `--accent`           | `#426342`     | Buttons, active chapters, links           |
+| `--accent-soft`      | `#426342`     | Compatible alias for readable accent text |
+| `--accent-muted`     | `#e8eddf`     | Contact panel and selected backgrounds    |
+| `--gold`             | `#895133`     | Secondary/clay accent                     |
+| `--gold-muted`       | `#f3e7dc`     | Coffee icon backgrounds                             |
+| `--teal-accent`      | `#895133`     | Compatible secondary-accent alias         |
+| `--accent-glow`      | `transparent` | Legacy token retained without a glow      |
 
-## 📁 File Locations
+Tailwind’s `@theme inline` maps these tokens to utilities such as `text-ink`, `text-accent`, and `bg-surface`. Most shared layouts also use named CSS classes in `globals.css`. Change tokens instead of searching for obsolete `teal-*` classes.
 
-### 1. **`src/app/globals.css`** - Main Color Definitions
+## Spotify palette
 
-#### Name Glow Colors (Lines 33-75):
+`src/lib/paletteFromImage.ts` decodes JPEG/PNG artwork and samples a 48×48 image. It keeps the saturated-midtone seed heuristic, then derives:
 
-```css
-/* Broken/flickering name - CHANGE THESE */
-.glitch-text {
-  color: #14b8a6; /* ← Change this to your accent color */
-  text-shadow: 0 0 5px rgba(20, 184, 166, 0.6), ...; /* ← Change rgba values */
-}
+- Light backgrounds at 97–99% HSL lightness, with restrained saturation.
+- Near-black ink and a muted readable text color.
+- A darker album-derived accent that supports white button text.
+- A hue-shifted secondary accent and pale tints.
 
-/* Clean glow name - CHANGE THESE */
-.glow-text {
-  color: #14b8a6; /* ← Change this to your accent color */
-  text-shadow: 0 0 10px rgba(20, 184, 166, 0.6), ...; /* ← Change rgba values */
-}
-```
+Accent and muted text derivation targets at least 4.5:1 contrast against the page and tinted surfaces. `npm test` verifies all text-role combinations across 24 hue samples, plus white-on-accent buttons. This is a color-level check, not a substitute for a rendered accessibility review.
 
-#### Glitch Effect Colors (Lines 55-67):
+The root `SpotifyThemeProvider` writes CSS variables onto the document element and clears them on failure. It polls across the site while the tab is visible, not only on the music page. The music section uses the same light palette as the rest of the portfolio.
 
-```css
-.glitch-text::before {
-  text-shadow: -1px 0 rgba(6, 182, 212, 0.5); /* ← Cyan accent for glitch */
-}
+To change dynamic colors, edit palette derivation in `paletteFromImage.ts`. If adding a new dynamic token, update `spotifyThemeTypes.ts`, the theme API mapping, and the provider’s allowed style keys together. For a static-only preview, leave Spotify environment variables unset.
 
-.glitch-text::after {
-  text-shadow: 1px 0 rgba(20, 184, 166, 0.5); /* ← Teal accent for glitch */
-}
-```
+## Typography, layout, and motion
 
-#### Body Background (Line 23):
+- Display: locally hosted Space Grotesk.
+- Body: locally hosted Inter.
+- Technical accents: system monospace.
+- Maximum content width: 1180px; 20px mobile gutters.
+- Cards: 16–24px radii, thin borders, minimal shadows.
+- Sticky navigation: warm translucent paper with backdrop blur.
+- Motion: transform and opacity only. Reveals progressively enhance visible HTML; `prefers-reduced-motion` disables transitions and smooth scrolling.
 
-```css
-body {
-  background: #0a0a0f; /* ← Main background color */
-}
-```
+Font files and their licenses are in `src/app/fonts/`. Portrait, project media, and Snoopy art retain their own original colors.
 
----
-
-### 2. **`src/components/InteractiveBackground.tsx`** - Background Colors
-
-#### Main Background (Line 3):
-
-```tsx
-<div className="fixed inset-0 -z-10 overflow-hidden bg-[#0a0a0f]">
-```
-
-#### Gradient Sky (Line 8):
-
-```tsx
-background: `linear-gradient(180deg, #0a0a0f 0%, #050508 50%, #0a0a0f 100%)`;
-```
-
-#### Grid Pattern (Lines 17-18):
-
-```tsx
-linear-gradient(rgba(20, 184, 166, 0.1) 1px, transparent 1px),  /* ← Teal grid */
-linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)  /* ← Cyan grid */
-```
-
-#### Corner Glow (Line 28):
-
-```tsx
-background: "radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, transparent 70%)";
-```
-
----
-
-### 3. **`src/app/layout.tsx`** - Body Background
-
-#### Body Background (Line 25):
-
-```tsx
-<body className="font-sans bg-[#0a0a0f]">
-```
-
----
-
-### 4. **Component Files** - Use Tailwind Classes
-
-All components use Tailwind's `teal-*` classes. To change colors globally, replace:
-
-#### Search and Replace Patterns:
-
-- `teal-400` → `your-color-400` (text colors)
-- `teal-500` → `your-color-500` (borders, backgrounds)
-- `bg-[#0a0a0f]` → `bg-[#your-hex]` (background colors)
-- `bg-[#0f0f15]` → `bg-[#your-hex]` (card backgrounds)
-
-#### Files to Update:
-
-- `src/components/HeroSection.tsx` - Buttons, social links, profile ring
-- `src/app/story/page.tsx` - Story headings, experience cards, skill tags
-- `src/components/ProjectCard.tsx` - Card borders, hover effects, tags
-- `src/components/NavBar.tsx` - Logo, links, borders
-
----
-
-## 🎯 Quick Color Change Tips
-
-### To Change to a Different Accent Color:
-
-1. **Pick your color** (e.g., `#8b5cf6` for purple, `#f59e0b` for amber)
-
-2. **Convert to RGB** for rgba values:
-
-   - `#14b8a6` = `rgb(20, 184, 166)`
-   - Use online tool: https://www.rapidtables.com/convert/color/hex-to-rgb.html
-
-3. **Update `globals.css`**:
-
-   - Replace `#14b8a6` with your hex color
-   - Replace `rgba(20, 184, 166, ...)` with your rgba values
-
-4. **Update `InteractiveBackground.tsx`**:
-
-   - Replace `rgba(20, 184, 166, ...)` with your rgba values
-
-5. **Update components**:
-   - Replace `teal-400` with `your-color-400`
-   - Replace `teal-500` with `your-color-500`
-   - Or use custom hex: `text-[#your-hex]`
-
----
-
-## 📝 Example: Changing to Purple
-
-### In `globals.css`:
-
-```css
-.glitch-text {
-  color: #8b5cf6; /* Changed from #14b8a6 */
-  text-shadow: 0 0 5px rgba(139, 92, 246, 0.6), ...;
-}
-
-.glow-text {
-  color: #8b5cf6; /* Changed from #14b8a6 */
-  text-shadow: 0 0 10px rgba(139, 92, 246, 0.6), ...;
-}
-```
-
-### In Components:
-
-```tsx
-// Change from:
-className = "text-teal-400";
-
-// To:
-className = "text-purple-400";
-// Or custom:
-className = "text-[#8b5cf6]";
-```
-
----
-
-## 🎨 Popular Color Schemes
-
-### Purple:
-
-- Accent: `#8b5cf6` or `#a855f7`
-- Background: `#0f0a1a` or `#1a0a2e`
-
-### Amber/Orange:
-
-- Accent: `#f59e0b` or `#fb923c`
-- Background: `#0f0a0a` or `#1a0f0a`
-
-### Blue:
-
-- Accent: `#3b82f6` or `#60a5fa`
-- Background: `#0a0f1a` or `#0f1419`
-
-### Green:
-
-- Accent: `#10b981` or `#34d399`
-- Background: `#0a0f0a` or `#0f1410`
+See `README.md` for Spotify OAuth, environment variables, caching, and deployment instructions.

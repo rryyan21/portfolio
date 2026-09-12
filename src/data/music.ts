@@ -7,11 +7,11 @@ export interface AlbumPick {
 }
 
 export const musicIntro =
-  "Music keeps me in flow: rhythm for debugging, harmony for design, and a good bridge for celebrating when tests finally pass.";
+  "Guitar is what I reach for when I step away from the screen. Here’s a little of what I listen to, play, and keep coming back to.";
 
 /** Short phrases - shown as chips under "Heavy rotation". Edit freely. */
 export const rotationVibes = [
-  "Piano / keys",
+  "Guitar",
   "Genre-hopping",
   "Deep-work playlists",
 ] as const;

@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import MusicThemeShell from "@/components/music/MusicThemeShell";
 import MusicSection from "@/components/MusicSection";
-
 export const metadata: Metadata = {
-  title: "Soundtrack | Ryan Gupta",
-  description: "Music, listening habits, and what is on repeat.",
+  title: "Soundtrack",
+  description:
+    "Guitar, records, and what’s on repeat. A side chapter by Ryan Gupta.",
 };
-
 export default function MusicPage() {
   return (
-    <MusicThemeShell>
-      <main className="mx-auto max-w-6xl px-4 pb-24 pt-20 md:px-8 md:pt-24">
-        <MusicSection />
-      </main>
-    </MusicThemeShell>
+    <main id="main-content" tabIndex={-1} className="site-width subpage">
+      <MusicSection />
+    </main>
   );
 }

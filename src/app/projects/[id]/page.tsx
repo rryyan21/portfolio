@@ -1,193 +1,169 @@
-"use client";
-
-import type { ReactNode } from "react";
-import { projects } from "@/data/projects";
-import { notFound } from "next/navigation";
-import { use } from "react";
+import type { Metadata } from "next";
+import { access } from "node:fs/promises";
+import path from "node:path";
+import Image from "next/image";
 import Link from "next/link";
-import ScenePanel from "@/components/ScenePanel";
-import {
-  ArrowLeft,
-  BookOpen,
-  Code2,
-  ExternalLink,
-  Rocket,
-  Sparkles,
-  Trophy,
-  Wrench,
-} from "lucide-react";
-
-export default function ProjectDetail({
+import { notFound, redirect } from "next/navigation";
+import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
+import { projects } from "@/data/projects";
+export function generateStaticParams() {
+  return projects.filter((p) => p.id !== "WIP").map((p) => ({ id: p.id }));
+}
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const project = projects.find((p) => p.id === id);
+  return {
+    title: project?.title ?? "Project not found",
+    description: project?.description,
+  };
+}
+async function existingVideo(src: string) {
+  if (!src.startsWith("/assets/images/") || src.includes("..")) return false;
+  try {
+    await access(path.join(process.cwd(), "public", src));
+    return true;
+  } catch {
+    return false;
+  }
+}
+export default async function ProjectDetail({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const resolvedParams = use(params);
-  const project = projects.find((p) => p.id === resolvedParams.id);
-
-  if (!project) return notFound();
-
-  const hasVideo = Boolean(project.video?.trim());
-  const hasGithub = Boolean(project.github?.trim());
-  const hasDemo = Boolean(project.demo?.trim());
-
+  const { id } = await params;
+  const project = projects.find((p) => p.id === id);
+  if (!project) notFound();
+  if (id === "WIP") redirect("/projects/coming-soon");
+  const hasVideo = await existingVideo(project.video);
   return (
-    <section className="min-h-screen px-4 py-24 text-ink md:px-6 md:py-28">
-      <div className="mx-auto max-w-6xl">
-        <ScenePanel className="p-6 md:p-8 lg:p-10">
-        <div className="mb-10 flex flex-wrap items-start justify-between gap-4 border-b border-border/40 pb-8">
-          <h1 className="font-display max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">
-            {project.title}
-          </h1>
-          <div className="flex flex-wrap gap-2">
-            {project.category ? (
-              <span className="bg-white/[0.06] px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-muted">
-                {project.category}
-              </span>
-            ) : null}
-            {project.year ? (
-              <span className="bg-accent-muted px-2.5 py-1 text-xs font-semibold text-accent-soft">
-                {project.year}
-              </span>
-            ) : null}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-10">
-          <div className="lg:col-span-2">
-            {hasVideo ? (
-              <video
-                src={project.video}
-                controls
-                className="w-full rounded-lg ring-1 ring-white/10"
-              />
-            ) : (
-              <div className="flex aspect-video w-full items-center justify-center rounded-lg border border-dashed border-white/15 bg-white/[0.03] text-sm text-muted">
-                No demo video for this entry yet.
-              </div>
-            )}
-          </div>
-
-          <div className="space-y-6 border-t border-border/40 pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-            <div>
-              <h2 className="font-display text-lg font-bold text-ink">
-                About the project
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                {project.description}
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-gold">
-                Technologies
-              </h3>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-white/[0.06] px-2.5 py-0.5 text-xs font-medium text-ink/90"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2 pt-2">
-              {hasGithub ? (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-soft"
-                >
-                  <Code2 className="h-4 w-4" />
-                  View code
-                </a>
-              ) : null}
-              {hasDemo ? (
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 py-2.5 text-sm font-semibold text-gold underline-offset-4 hover:text-accent hover:underline"
-                >
-                  <Rocket className="h-4 w-4" />
-                  Live demo
-                  <ExternalLink className="h-3.5 w-3.5 opacity-70" />
-                </a>
-              ) : null}
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-16 space-y-12 border-t border-border/40 pt-14">
-          {project.details?.length > 0 ? (
-            <Section
-              title="Project details"
-              icon={<BookOpen className="h-5 w-5 text-accent" />}
-              items={project.details}
-            />
-          ) : null}
-          {project.features?.length > 0 ? (
-            <Section
-              title="Key features"
-              icon={<Sparkles className="h-5 w-5 text-teal-accent" />}
-              items={project.features}
-            />
-          ) : null}
-          {project.challenges?.length > 0 ? (
-            <Section
-              title="Challenges"
-              icon={<Wrench className="h-5 w-5 text-accent" />}
-              items={project.challenges}
-            />
-          ) : null}
-          {project.achievements?.length > 0 ? (
-            <Section
-              title="Achievements"
-              icon={<Trophy className="h-5 w-5 text-teal-accent" />}
-              items={project.achievements}
-            />
-          ) : null}
-        </div>
-
-        <div className="mt-12 border-t border-border/40 pt-10">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-accent"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to missions
-          </Link>
-        </div>
-        </ScenePanel>
+    <main id="main-content" tabIndex={-1} className="site-width subpage">
+      <div className="detail-top">
+        <Link href="/projects" className="text-link">
+          <ArrowLeft size={16} aria-hidden="true" /> Missions archive
+        </Link>
+        <span className="mono">
+          {project.category.toUpperCase()} / {project.year}
+        </span>
       </div>
-    </section>
-  );
-}
-
-function Section({
-  title,
-  icon,
-  items,
-}: {
-  title: string;
-  icon: ReactNode;
-  items: string[];
-}) {
-  return (
-    <div>
-      <h2 className="flex items-center gap-2 border-b border-border/40 pb-3 font-display text-xl font-bold text-ink">
-        {icon}
-        {title}
-      </h2>
-      <ul className="mt-4 list-inside list-disc space-y-2 text-[15px] leading-relaxed text-muted">
-        {items.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
-    </div>
+      <header className="page-heading detail-intro">
+        <p className="eyebrow">A BUILD IN DETAIL</p>
+        <h1>{project.title}</h1>
+        <p>{project.description}</p>
+        {project.attribution && (
+          <div className="project-attribution">
+            <a
+              href={project.attribution.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {project.attribution.label}
+            </a>
+          </div>
+        )}
+        <div className="hero-actions">
+          {/^https:\/\/github\.com\//.test(project.github) && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button-primary"
+            >
+              <Github size={16} aria-hidden="true" /> View code{" "}
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </a>
+          )}
+          {project.demo.startsWith("https://") && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button-outline"
+            >
+              Live demo <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+          )}
+          <details className="build-tools">
+            <summary>Tools used</summary>
+            <ul className="tag-list">
+              {project.tags.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          </details>
+        </div>
+      </header>
+      <div className="detail-media">
+        <Image
+          src={project.image}
+          alt={`${project.title} project screenshot`}
+          fill
+          priority
+          sizes="(max-width: 767px) 92vw, 1180px"
+        />
+      </div>
+      {hasVideo && (
+        <details className="detail-video">
+          <summary>Watch the recorded walkthrough</summary>
+          <video
+            controls
+            preload="none"
+            poster={project.image}
+            width={1280}
+            height={720}
+            aria-label={`${project.title} recorded demonstration`}
+          >
+            <source src={project.video} type="video/mp4" />
+            <p>
+              Your browser does not support this video.{" "}
+              <a href={project.video}>Download the walkthrough</a>.
+            </p>
+          </video>
+        </details>
+      )}
+      <article
+        className="case-study"
+        aria-label={`${project.title}: the story`}
+      >
+        <section className="case-section">
+          <h2>The idea</h2>
+          <p>{project.caseStudy.problem}</p>
+          <p>{project.caseStudy.role}</p>
+        </section>
+        <section className="case-section">
+          <h2>Bringing it to life</h2>
+          <p>{project.caseStudy.constraints}</p>
+          <p>{project.caseStudy.decisions}</p>
+        </section>
+        <section className="case-section">
+          <h2>The finished project</h2>
+          <p>{project.caseStudy.result}</p>
+          <details className="case-features">
+            <summary>Explore the features</summary>
+            <ul>
+              {project.features.map((feature) => (
+                <li key={feature}>{feature}</li>
+              ))}
+            </ul>
+          </details>
+        </section>
+        <section className="case-learned">
+          <h2>What I’m taking with me</h2>
+          <p>{project.caseStudy.learned}</p>
+        </section>
+      </article>
+      <div className="archive-link">
+        <Link href="/projects" className="text-link">
+          <ArrowLeft size={15} aria-hidden="true" /> Back to all projects
+        </Link>
+        <Link href="/#contact" className="text-link">
+          Let’s talk about it <ArrowUpRight size={15} aria-hidden="true" />
+        </Link>
+      </div>
+    </main>
   );
 }

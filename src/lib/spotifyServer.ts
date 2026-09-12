@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+import { AsyncCache } from "@/lib/spotifyCache";
 const SPOTIFY_ACCOUNTS = "https://accounts.spotify.com";
 const SPOTIFY_API = "https://api.spotify.com/v1";
 
@@ -9,10 +11,10 @@ export type SpotifyTokenResponse = {
   scope?: string;
 };
 
-export async function refreshSpotifyAccessToken(
+async function requestSpotifyAccessToken(
   refreshToken: string,
   clientId: string,
-  clientSecret: string
+  clientSecret: string,
 ): Promise<SpotifyTokenResponse> {
   const body = new URLSearchParams({
     grant_type: "refresh_token",
@@ -26,6 +28,7 @@ export async function refreshSpotifyAccessToken(
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: body.toString(),
     cache: "no-store",
+    signal: AbortSignal.timeout(8_000),
   });
 
   if (!res.ok) {
@@ -40,7 +43,7 @@ export async function exchangeSpotifyCode(
   code: string,
   redirectUri: string,
   clientId: string,
-  clientSecret: string
+  clientSecret: string,
 ): Promise<SpotifyTokenResponse> {
   const body = new URLSearchParams({
     grant_type: "authorization_code",
@@ -55,6 +58,7 @@ export async function exchangeSpotifyCode(
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: body.toString(),
     cache: "no-store",
+    signal: AbortSignal.timeout(8_000),
   });
 
   if (!res.ok) {
@@ -74,7 +78,11 @@ export type RecentTrackMeta = {
   playedAt?: string;
 };
 
-type SpotifyImage = { url: string; height: number | null; width: number | null };
+type SpotifyImage = {
+  url: string;
+  height: number | null;
+  width: number | null;
+};
 
 type RecentlyPlayedItem = {
   played_at?: string;
@@ -91,14 +99,12 @@ type RecentlyPlayedResponse = {
 
 function pickAlbumImageUrl(images: SpotifyImage[] | undefined): string | null {
   if (!images?.length) return null;
-  const sorted = [...images].sort(
-    (a, b) => (a.width ?? 0) - (b.width ?? 0)
-  );
+  const sorted = [...images].sort((a, b) => (a.width ?? 0) - (b.width ?? 0));
   return sorted[0]?.url ?? images[0]?.url ?? null;
 }
 
 export async function fetchRecentlyPlayedTrack(
-  accessToken: string
+  accessToken: string,
 ): Promise<RecentTrackMeta | null> {
   const url = new URL(`${SPOTIFY_API}/me/player/recently-played`);
   url.searchParams.set("limit", "50");
@@ -106,6 +112,7 @@ export async function fetchRecentlyPlayedTrack(
   const res = await fetch(url.toString(), {
     headers: { Authorization: `Bearer ${accessToken}` },
     cache: "no-store",
+    signal: AbortSignal.timeout(8_000),
   });
 
   if (res.status === 204 || res.status === 404) return null;
@@ -130,7 +137,10 @@ export async function fetchRecentlyPlayedTrack(
   if (!track?.name) return null;
 
   const artist =
-    track.artists?.map((a) => a.name).filter(Boolean).join(", ") ?? "";
+    track.artists
+      ?.map((a) => a.name)
+      .filter(Boolean)
+      .join(", ") ?? "";
   const album = track.album?.name ?? "";
   const albumImageUrl = pickAlbumImageUrl(track.album?.images);
 
@@ -144,11 +154,12 @@ export async function fetchRecentlyPlayedTrack(
 }
 
 export async function fetchCurrentlyPlayingTrack(
-  accessToken: string
+  accessToken: string,
 ): Promise<RecentTrackMeta | null> {
   const res = await fetch(`${SPOTIFY_API}/me/player/currently-playing`, {
     headers: { Authorization: `Bearer ${accessToken}` },
     cache: "no-store",
+    signal: AbortSignal.timeout(8_000),
   });
 
   if (res.status === 204 || res.status === 404) return null;
@@ -158,6 +169,7 @@ export async function fetchCurrentlyPlayingTrack(
   }
 
   const data = (await res.json()) as {
+    is_playing?: boolean;
     item?: {
       name?: string;
       artists?: { name?: string }[];
@@ -165,11 +177,15 @@ export async function fetchCurrentlyPlayingTrack(
     };
   };
 
+  if (data.is_playing !== true) return null;
   const track = data.item;
   if (!track?.name) return null;
 
   const artist =
-    track.artists?.map((a) => a.name).filter(Boolean).join(", ") ?? "";
+    track.artists
+      ?.map((a) => a.name)
+      .filter(Boolean)
+      .join(", ") ?? "";
   const album = track.album?.name ?? "";
   const albumImageUrl = pickAlbumImageUrl(track.album?.images);
 
@@ -179,4 +195,20 @@ export async function fetchCurrentlyPlayingTrack(
     album,
     albumImageUrl,
   };
+}
+
+const tokenCache = new AsyncCache<SpotifyTokenResponse>(4);
+export function spotifyAccountKey(...parts: string[]): string {
+  return createHash("sha256").update(parts.join("\0")).digest("hex");
+}
+export function refreshSpotifyAccessToken(
+  refreshToken: string,
+  clientId: string,
+  clientSecret: string,
+) {
+  return tokenCache.get(
+    spotifyAccountKey(refreshToken, clientId, clientSecret),
+    (token) => Math.max(0, token.expires_in * 1000 - 60_000),
+    () => requestSpotifyAccessToken(refreshToken, clientId, clientSecret),
+  );
 }

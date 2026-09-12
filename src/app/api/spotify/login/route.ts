@@ -19,7 +19,7 @@ export async function GET() {
         error:
           "Missing SPOTIFY_CLIENT_ID or SPOTIFY_REDIRECT_URI. See .env.example.",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 

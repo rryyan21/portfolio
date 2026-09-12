@@ -15,6 +15,9 @@ import {
 } from "@/lib/spotifyThemeTypes";
 
 const THEME_STYLE_KEYS = [
+  "--ink",
+  "--muted",
+  "--border",
   "--page-bg",
   "--surface",
   "--surface-elevated",
@@ -36,7 +39,7 @@ function clearThemeStyles(el: HTMLElement) {
 function applyThemeToElement(
   el: HTMLElement,
   data: SpotifyThemePayload,
-  lastSignature: { current: string | null }
+  lastSignature: { current: string | null },
 ) {
   if (!data.ok || !data.theme) {
     lastSignature.current = null;
@@ -58,7 +61,9 @@ export type SpotifyThemeContextValue = {
   liveLoading: boolean;
 };
 
-const SpotifyThemeContext = createContext<SpotifyThemeContextValue | null>(null);
+const SpotifyThemeContext = createContext<SpotifyThemeContextValue | null>(
+  null,
+);
 
 export function useSpotifyTheme(): SpotifyThemeContextValue {
   const ctx = useContext(SpotifyThemeContext);
@@ -68,7 +73,11 @@ export function useSpotifyTheme(): SpotifyThemeContextValue {
   return ctx;
 }
 
-export default function SpotifyThemeProvider({ children }: { children: ReactNode }) {
+export default function SpotifyThemeProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const lastSignature = useRef<string | null>(null);
   const [live, setLive] = useState<SpotifyThemePayload | null>(null);
   const [liveLoading, setLiveLoading] = useState(true);
@@ -76,9 +85,14 @@ export default function SpotifyThemeProvider({ children }: { children: ReactNode
   useEffect(() => {
     const root = document.documentElement;
     let cancelled = false;
+    let running = false;
+    const controller = new AbortController();
 
     const run = async () => {
-      const data = await fetchSpotifyThemePayload();
+      if (running || document.visibilityState === "hidden") return;
+      running = true;
+      const data = await fetchSpotifyThemePayload(controller.signal);
+      running = false;
       if (cancelled) return;
       setLive(data);
       setLiveLoading(false);
@@ -86,10 +100,16 @@ export default function SpotifyThemeProvider({ children }: { children: ReactNode
     };
 
     void run();
+    const visible = () => {
+      if (document.visibilityState === "visible") void run();
+    };
+    document.addEventListener("visibilitychange", visible);
     const timer = setInterval(() => void run(), SPOTIFY_THEME_POLL_MS);
 
     return () => {
       cancelled = true;
+      controller.abort();
+      document.removeEventListener("visibilitychange", visible);
       clearInterval(timer);
       lastSignature.current = null;
       clearThemeStyles(root);
@@ -99,6 +119,8 @@ export default function SpotifyThemeProvider({ children }: { children: ReactNode
   const value: SpotifyThemeContextValue = { live, liveLoading };
 
   return (
-    <SpotifyThemeContext.Provider value={value}>{children}</SpotifyThemeContext.Provider>
+    <SpotifyThemeContext.Provider value={value}>
+      {children}
+    </SpotifyThemeContext.Provider>
   );
 }

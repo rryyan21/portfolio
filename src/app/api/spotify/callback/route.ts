@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
   if (!code || !state) {
     return NextResponse.json(
       { error: "Missing code or state" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
   if (!clientId || !clientSecret || !redirectUri) {
     return NextResponse.json(
       { error: "Server missing Spotify env vars" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -54,7 +54,7 @@ export async function GET(request: NextRequest) {
       code,
       redirectUri,
       clientId,
-      clientSecret
+      clientSecret,
     );
     if (!tokens.refresh_token) {
       return NextResponse.json(
@@ -62,7 +62,7 @@ export async function GET(request: NextRequest) {
           error:
             "No refresh_token returned. Revoke app access in Spotify account settings and try again.",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
     refreshToken = tokens.refresh_token;
@@ -101,6 +101,10 @@ export async function GET(request: NextRequest) {
 
   return new NextResponse(html, {
     status: 200,
-    headers: { "Content-Type": "text/html; charset=utf-8" },
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "no-store",
+      "Referrer-Policy": "no-referrer",
+    },
   });
 }

@@ -1,35 +1,13 @@
-export type NavLeaf = { readonly href: string; readonly label: string };
-
-export type NavGroup = {
-  readonly label: string;
-  readonly children: readonly NavLeaf[];
-};
-
-export type MainNavEntry = NavLeaf | NavGroup;
-
-export function isNavGroup(entry: MainNavEntry): entry is NavGroup {
-  return "children" in entry;
-}
-
-export const mainNav = [
-  { href: "/", label: "Home" },
-  { href: "/story", label: "Story" },
-  {
-    label: "Hobbies",
-    children: [
-      { href: "/music", label: "Music" },
-      { href: "/cooking", label: "Cooking" },
-    ],
-  },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
-] as const satisfies readonly MainNavEntry[];
-
-/** Home hero “chapter” menu — mirrors main nav with short hints */
-export const titleMenu = [
-  { num: "01", href: "/story", title: "Story", hint: "Experiences & stack" },
-  { num: "02", href: "/music", title: "Soundtrack", hint: "What I play while building" },
-  { num: "03", href: "/cooking", title: "Kitchen", hint: "Flavor, people, experiments" },
-  { num: "04", href: "/projects", title: "Missions", hint: "Shipped work and experiments" },
-  { num: "05", href: "/contact", title: "Comms", hint: "Say hello" },
+export const chapters = [
+  { id: "home", label: "Start", number: "00" },
+  { id: "projects", label: "Projects", number: "01" },
+  { id: "experience", label: "Journey", number: "02" },
+  { id: "contact", label: "Contact", number: "03" },
 ] as const;
+export const socialLinks = {
+  email: "mailto:rryyan21@gmail.com",
+  phone: "tel:+15307869574",
+  github: "https://github.com/rryyan21",
+  linkedin: "https://www.linkedin.com/in/ryan--gupta/",
+  resume: "/assets/images/RGResume.pdf",
+};
