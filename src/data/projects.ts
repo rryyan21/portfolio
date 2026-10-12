@@ -71,7 +71,7 @@ export const projects: Project[] = [
     description:
       "A friend’s resume tool, remade for my own LaTeX resume format with custom role presets, bullet choices, and PDF controls.",
     github: "https://github.com/rryyan21/resumetailor",
-    demo: "",
+    demo: "https://resumetailor-pink.vercel.app/",
     year: "2026",
     category: "Everyday tools",
     kind: "app",
