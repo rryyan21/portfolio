@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { Disc3 } from "lucide-react";
 import {
   albumCrate,
@@ -40,6 +40,7 @@ export default function MusicSection() {
       <section
         className="paper-panel hobby-card now-playing"
         aria-label="Spotify listening activity"
+        style={live?.ok && live.theme ? { ...live.theme, color: "var(--ink)" } as CSSProperties : undefined}
       >
         <div className="track-status">
           <h2>On the turntable.</h2>

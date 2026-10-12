@@ -4,7 +4,6 @@ import {
   createContext,
   useContext,
   useEffect,
-  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -13,48 +12,6 @@ import {
   SPOTIFY_THEME_POLL_MS,
   type SpotifyThemePayload,
 } from "@/lib/spotifyThemeTypes";
-
-const THEME_STYLE_KEYS = [
-  "--ink",
-  "--muted",
-  "--border",
-  "--page-bg",
-  "--surface",
-  "--surface-elevated",
-  "--accent",
-  "--accent-soft",
-  "--accent-muted",
-  "--accent-glow",
-  "--gold",
-  "--gold-muted",
-  "--teal-accent",
-] as const;
-
-function clearThemeStyles(el: HTMLElement) {
-  for (const key of THEME_STYLE_KEYS) {
-    el.style.removeProperty(key);
-  }
-}
-
-function applyThemeToElement(
-  el: HTMLElement,
-  data: SpotifyThemePayload,
-  lastSignature: { current: string | null },
-) {
-  if (!data.ok || !data.theme) {
-    lastSignature.current = null;
-    clearThemeStyles(el);
-    return;
-  }
-
-  const sig = JSON.stringify(data.theme);
-  if (sig === lastSignature.current) return;
-  lastSignature.current = sig;
-
-  for (const [key, value] of Object.entries(data.theme)) {
-    el.style.setProperty(key, value);
-  }
-}
 
 export type SpotifyThemeContextValue = {
   live: SpotifyThemePayload | null;
@@ -78,12 +35,10 @@ export default function SpotifyThemeProvider({
 }: {
   children: ReactNode;
 }) {
-  const lastSignature = useRef<string | null>(null);
   const [live, setLive] = useState<SpotifyThemePayload | null>(null);
   const [liveLoading, setLiveLoading] = useState(true);
 
   useEffect(() => {
-    const root = document.documentElement;
     let cancelled = false;
     let running = false;
     const controller = new AbortController();
@@ -96,7 +51,6 @@ export default function SpotifyThemeProvider({
       if (cancelled) return;
       setLive(data);
       setLiveLoading(false);
-      applyThemeToElement(root, data, lastSignature);
     };
 
     void run();
@@ -111,8 +65,6 @@ export default function SpotifyThemeProvider({
       controller.abort();
       document.removeEventListener("visibilitychange", visible);
       clearInterval(timer);
-      lastSignature.current = null;
-      clearThemeStyles(root);
     };
   }, []);
 

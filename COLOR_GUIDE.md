@@ -35,9 +35,9 @@ Tailwind’s `@theme inline` maps these tokens to utilities such as `text-ink`, 
 
 Accent and muted text derivation targets at least 4.5:1 contrast against the page and tinted surfaces. `npm test` verifies all text-role combinations across 24 hue samples, plus white-on-accent buttons. This is a color-level check, not a substitute for a rendered accessibility review.
 
-The root `SpotifyThemeProvider` writes CSS variables onto the document element and clears them on failure. It polls across the site while the tab is visible, not only on the music page. The music section uses the same light palette as the rest of the portfolio.
+`SpotifyThemeProvider` supplies listening data through React context while the tab is visible. `MusicSection` applies album-derived CSS variables only to its listening activity card, falling back to the default palette on failure. The page, navigation, contact panel, and other sections retain the stable paper and forest-green palette. The contact panel uses a pale green surface with green social labels and arrows.
 
-To change dynamic colors, edit palette derivation in `paletteFromImage.ts`. If adding a new dynamic token, update `spotifyThemeTypes.ts`, the theme API mapping, and the provider’s allowed style keys together. For a static-only preview, leave Spotify environment variables unset.
+To change dynamic colors, edit palette derivation in `paletteFromImage.ts`. If adding a new dynamic token, update `spotifyThemeTypes.ts` and the theme API mapping together. For a static-only preview, leave Spotify environment variables unset.
 
 ## Typography, layout, and motion
 

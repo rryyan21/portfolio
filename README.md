@@ -1,6 +1,6 @@
 # Ryan Gupta: portfolio
 
-A light, chapter-based portfolio built with Next.js 15.5, React 19, TypeScript (strict), Tailwind CSS 4, and Lucide icons. The homepage scrolls through Start → Projects → About → Journey → Contact. Spotify album artwork gently changes the site’s paper palette.
+A light, chapter-based portfolio built with Next.js 15.5, React 19, TypeScript (strict), Tailwind CSS 4, and Lucide icons. The homepage scrolls through Start → Projects → About → Journey → Contact. The site uses warm paper and forest-green accents. Spotify album artwork colors only the listening activity card in the music section.
 
 ## Run locally
 

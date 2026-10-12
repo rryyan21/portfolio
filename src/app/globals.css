@@ -626,6 +626,68 @@ h3 {
   padding: 52px;
   position: relative;
 }
+.contact-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+}
+.contact-copy {
+  min-width: 0;
+}
+.contact-profiles {
+  display: grid;
+  gap: 14px;
+  width: 240px;
+  max-width: 100%;
+  justify-self: center;
+}
+.contact-profiles > .eyebrow {
+  color: var(--accent);
+  margin-bottom: 4px;
+  text-align: center;
+}
+.contact-profiles a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 20px;
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  border-radius: 14px;
+  color: var(--accent);
+  font-family: var(--font-space), sans-serif;
+  font-size: 23px;
+  background: color-mix(in srgb, var(--surface) 45%, transparent);
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.contact-profiles a > svg:last-child {
+  color: var(--accent);
+  margin-left: auto;
+}
+.contact-profiles a:hover,
+.contact-profiles a:focus-visible {
+  color: var(--accent);
+  background: var(--surface);
+  border-color: var(--accent);
+}
+@media (max-width: 1000px) {
+  .contact-main {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .contact-profiles {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .contact-profiles > .eyebrow {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 480px) {
+  .contact-profiles {
+    grid-template-columns: 1fr;
+  }
+}
 .contact-panel h2 {
   font-size: clamp(35px, 4.1vw, 54px);
   letter-spacing: -0.055em;
@@ -633,7 +695,7 @@ h3 {
   font-weight: 500;
   margin-top: 20px;
 }
-.contact-panel > p:not(.eyebrow) {
+.contact-copy > p:not(.eyebrow) {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.9;
@@ -653,10 +715,10 @@ h3 {
 }
 .contact-bottom {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-wrap: wrap;
   gap: 20px;
-  border-top: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  border-top: 1px solid var(--border);
   padding-top: 24px;
   margin-top: 43px;
   color: var(--muted);
